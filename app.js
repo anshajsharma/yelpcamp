@@ -6,7 +6,7 @@ var express    = require('express'),
 // Working of database connection done here.........
 var mongoose = require("mongoose");
 // var url = 'mongodb://localhost:27017/myYelpCamp';
-var url = 'mongodb+srv://anshaj:anshaj@cluster0-6lapa.mongodb.net/test'
+var url = process.env.MONGODB_URI || 'mongodb+srv://anshaj:anshaj@cluster0-6lapa.mongodb.net/test'
 mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology: true });
 
 mongoose.setD

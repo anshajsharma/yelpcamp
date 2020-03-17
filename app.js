@@ -52,12 +52,12 @@ var camps = [
 
   app.get('/', function (req, res) {
     console.log(req.body);
-    res.render('home')
+    res.render('landing')
 
   })
   app.post('/', function (req, res) {
     console.log(req.body);
-    res.render('home')
+    res.render('landing')
 
   })
   app.get('/new', function (req, res) {

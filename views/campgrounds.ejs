@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+
+
+
+
+<div class="container">
+ 
+  <header class="jumbotron">
+    <h1>Welcome to YelpCamp</h1>
+  </header>
+  <br>
+
+  <h3>Upload a new Image here....</h3>
+  <br>
+
+  
+<form action="/newImage" method="POST">
+  <input name="title" type="text" placeholder="Title of new image..." >
+  <input name="image_url" type="text" placeholder="Url of new image..." >
+  <input name="description" type="text" placeholder="Description of new image..." >
+  <button>Add</button>
+</form>
+<br>
+</div>
+
+<!-- <%= camps.length %> -->
+<div class="row">
+
+
+<% camps.forEach(function(camp){ %>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="card">
+        <div class="img-thumbnail">
+            <img src=" <%= camp.imageUrl  %>  " style="width: 100%;">
+        </div>
+        <div class="title">
+          <strong> <%=camp.name %> </strong>
+          <p>
+            <a href="/show/<%= camp._id  %> " class="btn btn-primary" > More Info </a>
+          </p>
+        </div>
+        
+        
+      </div>   
+    </div>
+ 
+<% }) %>
+</div>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+<%- include('partials/footer') %>

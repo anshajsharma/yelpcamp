@@ -1,0 +1,20 @@
+
+<%- include('partials/header') %>
+<div class="container">
+    
+    <h1 style="color: brown;"> <strong> <%=foundCampGround.name %>  </strong> </h1>
+
+    <div >
+        <img src=" <%= foundCampGround.imageUrl  %>  " style="border: chartreuse; border-radius: 1%; border: 2px;">
+    </div>
+    <br>
+    <p style="color: green;"> <%= foundCampGround.description  %> </p>
+
+    <p>
+        <a href="/show/<%= foundCampGround._id  %>/edit " class="btn btn-primary" > Edit </a>
+      </p>
+    
+    
+  </div>  
+  <br><br><br>
+  <%- include('partials/footer') %>

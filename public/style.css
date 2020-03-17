@@ -1,0 +1,36 @@
+
+header {
+    margin-left: 0px !important;
+    width: 100% !important;
+}
+.container{
+    text-align: center;
+}
+.thumbnail{
+    margin: 2%;
+    margin-left: 3%;
+    margin-right: 4%;
+}
+#dfghj{
+    text-align: left;
+}
+.row{
+    margin-left: 8%;
+    margin-right: 8%; 
+}
+.title{
+    text-align: center;
+    font-size: large;
+}
+/* body {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #4f5d6e;
+    position: relative;
+    background: rgb(26, 49, 95);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(26, 49, 95, 1)), color-stop(10%, rgba(26, 49, 95, 1)), color-stop(24%, rgba(29, 108, 141, 1)), color-stop(37%, rgba(41, 136, 151, 1)), color-stop(77%, rgba(39, 45, 100, 1)), color-stop(90%, rgba(26, 49, 95, 1)), color-stop(100%, rgba(26, 49, 95, 1)));
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#1a315f', endColorstr='#1a315f', GradientType=0);
+  } */
+  
+ 

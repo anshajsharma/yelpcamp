@@ -1,0 +1,33 @@
+
+<%- include('partials/header') %>
+
+
+<div class="container" id="dfghj">
+  <h1 style="padding-top: 4%;"> <strong>Edit Section</strong>  </h1>
+  <form method="POST" action="/" >
+    <div class="form-group">
+      <label style="margin-left: .8%;"  for="exampleInputPassword1">Title</label>
+      <input name="name" value="<%=foundCampGround.name %>" class="form-control" id="exampleInputPassword1" placeholder="Uloaded Image Title..">
+    </div>
+    <div class="form-group">
+      <label style="margin-left: .8%;"  for="exampleFormControlTextarea1">Description</label>
+      <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    
+    <div class="form-check">
+      <input name="checkbox" type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">I'm sure edit it...</label>
+    </div>
+    <span> 
+      <button class="ui inverted violet button">Edit</button> 
+      <button class="ui inverted red button">Delete</button>
+    </span>
+    
+  </form>
+</div>
+
+
+
+
+
+<%- include('partials/footer') %>

@@ -1,13 +1,26 @@
 
 var express    = require('express'),
     bodyParser = require('body-parser'),
+    methodOverride = require('method-override')
     app        = express();
 
 // Working of database connection done here.........
 var mongoose = require("mongoose");
-// var url = 'mongodb://localhost:27017/myYelpCamp';
-var url = process.env.MONGODB_URI || 'mongodb+srv://anshaj:anshaj@cluster0-6lapa.mongodb.net/test'
-mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology: true });
+var url = 'mongodb://localhost:27017/myYelpCamp';
+
+app.use(methodOverride("_method"));
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(express.static("public"));
+app.set("view engine" , "ejs");  // After writing this line we do not have to write .ejs
+                                 // during rendering
+
+const request = require('request');
+
+// var url =  'mongodb+srv://anshaj:anshaj@cluster0-6lapa.mongodb.net/test' ;
+
+// console.log(url);
+mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology: true , useFindAndModify: false });
 
 mongoose.setD
 // A campground schema is created........
@@ -16,7 +29,7 @@ var campgroundSchema = new mongoose.Schema({
   imageUrl:String,
   description:String,
   timestamp: {type:Number, default: new Date().getTime()},
-  create: { type:Date , default:Date.now }   
+  // create: { type:Date , default:Date.now }   
 });
 
 var Campground= mongoose.model("Campground",campgroundSchema);
@@ -33,13 +46,6 @@ var Campground= mongoose.model("Campground",campgroundSchema);
 //    }
 // });
 
-app.use(bodyParser.urlencoded({ extended: true }))
-
-app.use(express.static("public"));
-app.set("view engine" , "ejs");  // After writing this line we do not have to write .ejs
-                                 // during rendering
-
-const request = require('request');
 
 var camps = [
     { name:'Wonderful',imageUrl:"https://cdn.pixabay.com/photo/2019/10/03/11/14/camp-4522970__340.jpg" },
@@ -79,8 +85,6 @@ var camps = [
         res.render('show',{foundCampGround:foundCampGround});
       }
     });
-
-    
   })
 
   app.get('/show/:id/edit', function (req, res) {
@@ -110,9 +114,7 @@ var camps = [
       res.render('campgrounds',{camps:camps});
       // console.log(camps);
      }
-    });
-    
-     
+    }); 
   })
 
   app.post('/newImage', function (req, res) {
@@ -133,6 +135,32 @@ var camps = [
    });
    res.redirect('/campgrounds');
    })
+  //UPDATE Route.....
+   app.put("/camp/:id",function(req,res){
+     console.log(req.body);
+     Campground.findByIdAndUpdate(req.params.id , req.body , function(err , updatedcamp){
+       if(err){
+          res.redirect('/campgrounds');
+       }else{
+          res.redirect('/show/'+req.params.id);
+       }
+     })
+    //  res.send('Update Route...');
+   });
+
+  // DELETE Route......
+   app.delete("/camp/:id",function(req,res){
+   // console.log(req.body);
+    Campground.findByIdAndDelete(req.params.id  , function(err ){
+      if(err){
+        console.log(err);
+         res.redirect('/campgrounds');
+      }else{
+         res.redirect('/campgrounds');
+      }
+    })
+    // res.send('Delete Route...');
+  });
 
 
 
